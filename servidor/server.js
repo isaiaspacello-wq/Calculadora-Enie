@@ -54,10 +54,11 @@ const resultado = await preference.create({
             }
         ],
         back_urls: {
-            success: "https://www.mercadopago.com.ar",
-            failure: "https://www.mercadopago.com.ar",
-            pending: "https://www.mercadopago.com.ar"
-        }
+    success: "https://calculadora-enie.onrender.com/pago-exitoso",
+    failure: "https://calculadora-enie.onrender.com/pago-fallido",
+    pending: "https://calculadora-enie.onrender.com/pago-pendiente"
+},
+auto_return: "approved"
     }
 });
 
