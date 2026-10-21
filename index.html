@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10131c">
+    <title>Calculadora Enie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+        <main class="app free-mode">
+        <header class="header">
+            <div>
+                <p class="eyebrow">TU CALCULADORA</p>
+                <h1>Calculadora <span>Enie</span></h1>
+            </div>
+            <button class="premium-btn" id="premiumBtn">♛ PRO</button>
+        </header>
+
+        <section class="calculator">
+            <div class="display">
+                <div id="previous" class="previous"></div>
+                <div id="result" class="result">0</div>
+            </div>
+
+            <div class="buttons">
+                
+    
+<div class="scientific-buttons" id="scientificButtons" hidden>
+    <button data-action="scientific" data-value="sin">sin</button>
+    <button data-action="scientific" data-value="cos">cos</button>
+    <button data-action="scientific" data-value="tan">tan</button>
+    <button data-action="scientific" data-value="sqrt">√</button>
+    <button data-action="scientific" data-value="square">x²</button>
+    <button data-action="scientific" data-value="power">xʸ</button>
+    <button data-action="scientific" data-value="log">log</button>
+    <button data-action="scientific" data-value="ln">ln</button>
+    <button data-action="scientific" data-value="pi">π</button>
+    <button data-action="scientific" data-value="open">(</button>
+    <button data-action="scientific" data-value="close">)</button>
+</div>
+
+
+                <button class="function" data-action="clear">AC</button>
+                <button class="function" data-action="sign">+/−</button>
+                <button class="function" data-action="percent">%</button>
+                <button class="operator" data-value="/">÷</button>
+
+                <button data-value="7">7</button>
+                <button data-value="8">8</button>
+                <button data-value="9">9</button>
+                <button class="operator" data-value="*">×</button>
+
+                <button data-value="4">4</button>
+                <button data-value="5">5</button>
+                <button data-value="6">6</button>
+                <button class="operator" data-value="-">−</button>
+
+                <button data-value="1">1</button>
+                <button data-value="2">2</button>
+                <button data-value="3">3</button>
+                <button class="operator" data-value="+">+</button>
+
+                <button class="function" data-action="backspace">⌫</button>
+                <button data-value="0">0</button>
+                <button data-action="decimal">,</button>
+                <button class="equals" data-action="equals">=</button>
+            </div>
+        </section>
+
+        <section class="premium-card">
+            <div class="crown">♛</div>
+            <div class="premium-info">
+                <h2>Enie Premium</h2>
+                <p>Desbloqueá funciones exclusivas.</p>
+            </div>
+            <button id="premiumCardBtn" class="unlock-btn">Ver PRO</button>
+        </section>
+
+        <p class="footer">Version 1.0</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

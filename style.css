@@ -1,0 +1,375 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    color-scheme: dark;
+    --bg: #10131c;
+    --panel: #191e2b;
+    --button: #252c3c;
+    --accent: #7c83ff;
+    --text: #f4f5ff;
+    --muted: #929bb1;
+}
+
+body {
+    min-height: 100vh;
+    padding: 24px 14px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.app {
+    width: 100%;
+    max-width: 390px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.header h1 span {
+    color: var(--accent);
+}
+
+.premium-btn {
+    padding: 9px 12px;
+    border: 1px solid #444b70;
+    border-radius: 10px;
+    background: #242840;
+    color: #d9d9ff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.calculator {
+    background: var(--panel);
+    border: 1px solid #2c3345;
+    border-radius: 20px;
+    padding: 14px;
+    box-shadow: 0 12px 30px #0002;
+}
+
+.display {
+    min-height: 100px;
+    padding: 16px 10px;
+    margin-bottom: 14px;
+    background: #111520;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.previous {
+    width: 100%;
+    min-height: 14px;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.result {
+    width: 100%;
+    color: var(--text);
+    font-size: 34px;
+    font-weight: 500;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.buttons > button {
+    min-width: 0;
+    height: 51px;
+    border: none;
+    border-radius: 11px;
+    background: var(--button);
+    color: var(--text);
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.buttons > button:active {
+    opacity: 0.75;
+}
+
+.buttons > button.function {
+    background: #34394b;
+    color: #d4d8e9;
+}
+
+.buttons > button.operator {
+    background: #34345a;
+    color: #c6c8ff;
+}
+
+.buttons > button.equals {
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+}
+
+/* Funciones científicas */
+.scientific-buttons {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+    padding-bottom: 12px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #34394b;
+}
+
+.scientific-buttons button {
+    min-width: 0;
+    height: 40px;
+    padding: 3px;
+    border: none;
+    border-radius: 9px;
+    background: #252b3b;
+    color: #c6c9ff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.premium-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 14px;
+    border: 1px solid #30344b;
+    border-radius: 15px;
+    background: #191d2b;
+}
+
+.crown {
+    font-size: 24px;
+    color: #b6b8ff;
+}
+
+.premium-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.premium-info h2 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.premium-info p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.unlock-btn {
+    padding: 9px 11px;
+    border: none;
+    border-radius: 9px;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.footer {
+    margin-top: 18px;
+    color: #6e768c;
+    font-size: 11px;
+    text-align: center;
+}
+
+@media (max-width: 350px) {
+    .app {
+        max-width: 100%;
+    }
+
+    .calculator {
+        padding: 10px;
+    }
+
+    .buttons {
+        gap: 6px;
+    }
+
+    .buttons > button {
+        height: 46px;
+        font-size: 17px;
+    }
+
+    .scientific-buttons {
+        gap: 5px;
+    }
+
+    .scientific-buttons button {
+        font-size: 12px;
+    }
+}
+
+
+/* ===== MODO PREMIUM ===== */
+
+.app.premium-mode {
+    max-width: 430px;
+}
+
+.premium-mode .calculator {
+    padding: 18px;
+    border-radius: 25px;
+    box-shadow: 0 20px 55px #0004;
+}
+
+.premium-mode .display {
+    min-height: 112px;
+    padding: 18px 12px;
+    border-radius: 17px;
+    gap: 12px;
+}
+
+.premium-mode .result {
+    font-size: clamp(30px, 8vw, 40px);
+}
+
+.premium-mode .buttons {
+    gap: 10px;
+}
+
+.premium-mode .buttons > button {
+    min-height: 54px;
+    height: auto;
+    border-radius: 15px;
+}
+
+.premium-mode .scientific-buttons {
+    gap: 9px;
+    padding-bottom: 15px;
+}
+
+.premium-mode .scientific-buttons button {
+    min-height: 46px;
+    height: auto;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+.premium-mode .premium-card {
+    border-color: #686ef0;
+    background: #1b1d32;
+}
+.scientific-buttons[hidden] {
+    display: none !important;
+}
+/* DISEÑO PREMIUM */
+.app.premium-mode {
+    max-width: 430px;
+    width: 100%;
+}
+
+.premium-mode .calculator {
+    padding: 18px;
+    border-radius: 25px;
+    box-shadow: 0 20px 55px #0004;
+}
+
+.premium-mode .display {
+    min-height: 112px;
+    padding: 18px 12px;
+    border-radius: 17px;
+}
+
+.premium-mode .result {
+    font-size: clamp(30px, 8vw, 40px);
+}
+
+.premium-mode .buttons {
+    gap: 10px;
+}
+
+.premium-mode .buttons > button {
+    min-height: 54px;
+    border-radius: 15px;
+}
+
+.premium-mode .scientific-buttons:not([hidden]) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+    padding-bottom: 15px;
+}
+
+.scientific-buttons[hidden] {
+    display: none !important;
+}
+/* Diseño gratuito */
+.app.free-mode {
+    max-width: 390px;
+}
+
+/* Diseño Premium */
+.app.premium-mode {
+    max-width: 430px;
+}
+
+.premium-mode .calculator {
+    padding: 18px;
+    border-radius: 25px;
+    box-shadow: 0 20px 55px #0004;
+}
+
+.premium-mode .display {
+    min-height: 112px;
+    padding: 18px 12px;
+    border-radius: 17px;
+}
+
+.premium-mode .result {
+    font-size: clamp(30px, 8vw, 40px);
+}
+
+.premium-mode .buttons {
+    gap: 10px;
+}
+
+.premium-mode .buttons > button {
+    min-height: 54px;
+    border-radius: 15px;
+}
+
+.scientific-buttons[hidden] {
+    display: none !important;
+}
