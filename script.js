@@ -313,43 +313,36 @@ document.addEventListener("keydown", event => {
         percentage();
     }
 });
+
 async function verificarCompra() {
     const params = new URLSearchParams(window.location.search);
-    const paymentId = params.get("payment_id");
+    const paymentId = params.get("payment_id") || params.get("collection_id");
 
-    if (!paymentId) {
-        updateMode();
-        return;
-    }
+    if (!paymentId) return;
 
     try {
         const respuesta = await fetch(
-            "/verificar-pago/" + encodeURIComponent(paymentId)
+            `/verificar-pago/${encodeURIComponent(paymentId)}`
         );
-
         const datos = await respuesta.json();
 
         if (respuesta.ok && datos.aprobado === true) {
             localStorage.setItem("eniePremium", "true");
             premiumDemo = true;
             updateMode();
-            alert("¡Pago aprobado! Enie Premium está activado.");
+            alert("¡Premium activado correctamente!");
         } else {
-            alert("El pago todavía no está aprobado. Premium sigue bloqueado.");
+            alert("El pago todavía no figura aprobado. Si ya pagaste, volvé a comprobarlo en unos segundos.");
         }
     } catch (error) {
-        console.error(error);
-        alert("No se pudo verificar el pago. Intentá nuevamente.");
+        alert("No pudimos verificar el pago. Intentá nuevamente.");
     } finally {
-        window.history.replaceState(
-            {},
-            document.title,
-            window.location.pathname
-        );
+        window.history.replaceState({}, document.title, "/");
     }
 }
 
 verificarCompra();
+
 updateMode();
 updateDisplay();
 
