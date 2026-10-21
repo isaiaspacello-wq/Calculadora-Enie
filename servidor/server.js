@@ -93,7 +93,24 @@ app.get("/pago-fallido", (req, res) => {
 app.get("/pago-pendiente", (req, res) => {
     res.send("El pago está pendiente de confirmación.");
 });
+app.get("/verificar-pago/:id", async (req, res) => {
+    try {
+        const resultado = await payment.get({
+            id: req.params.id
+        });
 
+        res.json({
+            id: resultado.id,
+            estado: resultado.status,
+            aprobado: resultado.status === "approved"
+        });
+    } catch (error) {
+        console.error("Error al verificar el pago:", error.message);
+        res.status(500).json({
+            error: "No se pudo verificar el pago"
+        });
+    }
+});
 app.listen(process.env.PORT || 3000, () => {
     console.log("Servidor de Enie activo en http://localhost:3000");
 });
